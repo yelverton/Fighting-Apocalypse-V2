@@ -5,10 +5,9 @@ class Animation
 private:
 	int frameWidth;
 	int frameHeight;
-	float velocity;
 
 public:
-	Animation(int frameWidth, int frameHeight, float velocity);
+	Animation(int frameWidth, int frameHeight);
 	virtual ~Animation();
 
 	void updateAnimation();

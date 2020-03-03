@@ -1,7 +1,7 @@
 #include "Animation.h"
 
-Animation::Animation(int frameWidth, int frameHeight, float velocity)
-	:frameWidth(frameWidth), frameHeight(frameHeight), velocity(velocity)
+Animation::Animation(int frameWidth, int frameHeight)
+	:frameWidth(frameWidth), frameHeight(frameHeight)
 {
 }
 

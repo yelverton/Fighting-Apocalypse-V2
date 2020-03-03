@@ -3,13 +3,15 @@
 #include "Animation.h"
 #include <string>
 
-class CharacterEntity:public sf::Drawable
+class CharacterEntity:public Animation, sf::Drawable
 {
 private:
 	sf::Sprite sprite;
 	sf::Texture texture;
 	std::string fileName;
 
+	int windowWidth;
+	int windowHeight;
 	int startLives;
 	int lives;
 	float speed;
@@ -17,13 +19,23 @@ private:
 	//hitbox
 	//hitboxTest
 
+protected:
+	const static int RIGHT = -1;
+	const static int DOWN = 1;
+	const static int LEFT = 1;
+	const static int UP = -1;
+	const static int NONE = 0;
+
 public:
-	CharacterEntity(float speed, int frameWidth, int frameHeight, std::string fileName, int lives=300);
+	CharacterEntity(int windowWidth, int windowHeight, float speed, int frameWidth, int frameHeight, std::string fileName, int lives=300);
 	virtual ~CharacterEntity();
 
 	sf::FloatRect getGlobal();
 	//hurtbox floatrect
 	//hurtboxTest floatrect
+
+	void setSpritePosition(float xPos, float yPos);
+	void moveSpritePosition(float xOffset, float yOffset);
 
 	int getLives();
 	void increaseLives(int increase);

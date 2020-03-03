@@ -1,7 +1,7 @@
 #include "CharacterEntity.h"
 
-CharacterEntity::CharacterEntity(float speed, int frameWidth, int frameHeight, std::string fileName, int lives)
-	:speed(speed), fileName(fileName), lives(lives), startLives(lives)
+CharacterEntity::CharacterEntity(int windowWidth, int windowHeight, float speed, int frameWidth, int frameHeight, std::string fileName, int lives)
+	:Animation(frameWidth, frameHeight), speed(speed), fileName(fileName), lives(lives), startLives(lives), windowWidth(windowWidth), windowHeight(windowHeight)
 {
 	texture.loadFromFile("../Images/" + fileName + ".png");
 	sprite.setTexture(texture);
@@ -14,6 +14,25 @@ CharacterEntity::~CharacterEntity()
 sf::FloatRect CharacterEntity::getGlobal()
 {
 	return sprite.getGlobalBounds();
+}
+
+void CharacterEntity::setSpritePosition(float xPos, float yPos)
+{
+	sprite.setPosition(xPos, yPos);
+}
+
+void CharacterEntity::moveSpritePosition(float xOffset, float yOffset)
+{
+	if (sprite.getPosition().x < 0.f)
+	{
+		sprite.setPosition(0.f, sprite.getPosition().y);
+	}
+	else if (sprite.getPosition().x + sprite.getGlobalBounds().width > windowWidth)
+	{
+		sprite.setPosition(windowWidth - sprite.getGlobalBounds().width, sprite.getPosition().y);
+	}
+
+	sprite.move(xOffset, yOffset);
 }
 
 int CharacterEntity::getLives()

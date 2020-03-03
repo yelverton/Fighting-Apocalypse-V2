@@ -4,7 +4,7 @@
 class PlayerOne:public CharacterEntity
 {
 public:
-	PlayerOne(float speed, int frameWidth, int frameHeight, std::string fileName, int lives);
+	PlayerOne(int windowWidth, int windowHeight, float speed, int frameWidth, int frameHeight, std::string fileName, int lives);
 	virtual ~PlayerOne();
 
 	// Inherited via CharacterEntity
