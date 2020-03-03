@@ -1,5 +1,6 @@
 #pragma once
 #include <SFML/Graphics.hpp>
+#include "Animation.h"
 #include <string>
 
 class CharacterEntity:public sf::Drawable
@@ -9,10 +10,8 @@ private:
 	sf::Texture texture;
 	std::string fileName;
 
+	int startLives;
 	int lives;
-	int frameWidth;
-	int frameHeight;
-	float velocity;
 	float speed;
 
 	//hitbox

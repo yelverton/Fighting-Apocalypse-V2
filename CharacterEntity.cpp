@@ -1,7 +1,7 @@
 #include "CharacterEntity.h"
 
 CharacterEntity::CharacterEntity(float speed, int frameWidth, int frameHeight, std::string fileName, int lives)
-	:speed(speed), frameWidth(frameWidth), frameHeight(frameHeight), fileName(fileName), lives(lives)
+	:speed(speed), fileName(fileName), lives(lives), startLives(lives)
 {
 	texture.loadFromFile("../Images/" + fileName + ".png");
 	sprite.setTexture(texture);
@@ -23,7 +23,10 @@ int CharacterEntity::getLives()
 
 void CharacterEntity::increaseLives(int increase)
 {
-	lives -= increase;
+	if (startLives > lives)
+	{
+		lives += increase;
+	}
 }
 
 void CharacterEntity::decreaseLives(int decrease)
