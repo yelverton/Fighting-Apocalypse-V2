@@ -19,7 +19,7 @@ private:
 	//hitboxTest
 
 public:
-	CharacterEntity(float speed, int frameWidth, int frameHeight, float velocity, std::string fileName, int lives=300);
+	CharacterEntity(float speed, int frameWidth, int frameHeight, std::string fileName, int lives=300);
 	virtual ~CharacterEntity();
 
 	sf::FloatRect getGlobal();
@@ -29,6 +29,7 @@ public:
 	int getLives();
 	void increaseLives(int increase);
 	void decreaseLives(int decrease);
+	void setPosition(float xPos, float yPos);
 
 	virtual void update() = 0;
 
