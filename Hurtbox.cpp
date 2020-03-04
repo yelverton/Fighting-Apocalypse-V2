@@ -1,6 +1,7 @@
 #include "Hurtbox.h"
 
 Hurtbox::Hurtbox(const sf::Sprite & sprite)
+	:sprite(sprite)
 {
 }
 

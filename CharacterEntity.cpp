@@ -1,7 +1,7 @@
 #include "CharacterEntity.h"
 
-CharacterEntity::CharacterEntity(int windowWidth, int windowHeight, float speed, int frameWidth, int frameHeight, std::string fileName, int lives)
-	:Animation(frameWidth, frameHeight), speed(speed), fileName(fileName), lives(lives), startLives(lives), windowWidth(windowWidth), windowHeight(windowHeight)
+CharacterEntity::CharacterEntity(int windowWidth, int windowHeight, float speed, std::string fileName, int lives)
+	:speed(speed), fileName(fileName), lives(lives), startLives(lives), windowWidth(windowWidth), windowHeight(windowHeight)
 {
 	texture.loadFromFile("../Images/" + fileName + ".png");
 	sprite.setTexture(texture);

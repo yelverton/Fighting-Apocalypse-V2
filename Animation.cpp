@@ -1,7 +1,7 @@
 #include "Animation.h"
 
-Animation::Animation(int frameWidth, int frameHeight)
-	:frameWidth(frameWidth), frameHeight(frameHeight)
+Animation::Animation(int frameWidth, int frameHeight, int windowWidth, int windowHeight, float speed, std::string fileName, int lives)
+	:frameWidth(frameWidth), frameHeight(frameHeight), CharacterEntity(windowWidth, windowHeight, speed, fileName, lives)
 {
 }
 
@@ -41,4 +41,16 @@ void Animation::Crouth(int row, int nrColumn, int frames)
 void Animation::jump(int row, int nrColumn, int frames)
 {
 	changeAnimation(row, nrColumn, frames);
+}
+
+void Animation::update()
+{
+	bool moving = false;
+	
+
+
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::L))
+	{
+		moveSpritePosition(UP, NONE);
+	}
 }

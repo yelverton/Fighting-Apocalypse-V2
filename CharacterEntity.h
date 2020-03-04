@@ -1,9 +1,8 @@
 #pragma once
 #include <SFML/Graphics.hpp>
-#include "Animation.h"
 #include <string>
 
-class CharacterEntity:public Animation, sf::Drawable
+class CharacterEntity:public sf::Drawable
 {
 private:
 	sf::Sprite sprite;
@@ -27,7 +26,7 @@ protected:
 	const static int NONE = 0;
 
 public:
-	CharacterEntity(int windowWidth, int windowHeight, float speed, int frameWidth, int frameHeight, std::string fileName, int lives=300);
+	CharacterEntity(int windowWidth, int windowHeight, float speed, std::string fileName, int lives=300);
 	virtual ~CharacterEntity();
 
 	sf::FloatRect getGlobal();

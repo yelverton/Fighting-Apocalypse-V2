@@ -1,7 +1,7 @@
 #include "PlayerOne.h"
 
 PlayerOne::PlayerOne(int windowWidth, int windowHeight, float speed, int frameWidth, int frameHeight, std::string fileName, int lives)
-	:CharacterEntity(windowWidth, windowHeight, 3.0f, frameWidth, frameHeight, fileName)
+	:Animation(frameWidth, frameHeight, windowWidth, windowHeight, speed, fileName, lives)
 {
 }
 
@@ -11,6 +11,9 @@ PlayerOne::~PlayerOne()
 
 void PlayerOne::update()
 {
+	Animation(update());
+
+
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
 	{
 		 

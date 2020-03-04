@@ -1,13 +1,15 @@
 #pragma once
+#include "CharacterEntity.h"
 
-class Animation
+class Animation: public CharacterEntity
 {
 private:
+	sf::IntRect intRect;
 	int frameWidth;
 	int frameHeight;
 
 public:
-	Animation(int frameWidth, int frameHeight);
+	Animation(int frameWidth, int frameHeight, int windowWidth, int windowHeight, float speed, std::string fileName, int lives = 300);
 	virtual ~Animation();
 
 	void updateAnimation();
@@ -18,4 +20,7 @@ public:
 	void specialAttack(int row, int nrColumn, int frames);
 	void Crouth(int row, int nrColumn, int frames);
 	void jump(int row, int nrColumn, int frames);
+
+	// Inherited via CharacterEntity
+	virtual void update() override;
 };

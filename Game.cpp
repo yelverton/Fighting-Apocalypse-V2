@@ -38,6 +38,7 @@ void Game::update()
 		
 		elapsedTimeSinceLastUpdate -= timePerFrame;
 		
+		playerOnePtr->update();
 		
 		
 
@@ -48,6 +49,7 @@ void Game::render()
 {
 	window.clear();
 	
+	window.draw(*playerOnePtr);
 
 	window.display();
 }
@@ -55,10 +57,11 @@ void Game::render()
 Game::Game()
 	:window(sf::VideoMode(WIDTH,HEIGHT),"Fighting Apocalypse"),
 	timePerFrame(sf::seconds(1.0f/60.0f)),
-	elapsedTimeSinceLastUpdate(sf::Time::Zero),
-	playerOnePtr()
+	elapsedTimeSinceLastUpdate(sf::Time::Zero)
 {
 	//this->dt = 0;
+	playerOnePtr = new PlayerOne(WIDTH, HEIGHT, 3.0f, 70, 80, "ken", 300);
+	playerOnePtr->setPosition(100, 100);
 	
 	window.setKeyRepeatEnabled(false);
 }

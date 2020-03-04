@@ -10,13 +10,13 @@ public:
 private:
 	sf::Clock clock;
 	sf::Time elapsedTimeSinceLastUpdate;
+	sf::RenderWindow window;
 	sf::Time timePerFrame;
 
-	PlayerOne playerOnePtr;
+	PlayerOne *playerOnePtr;
 
 	//HUD* hud;
 
-	sf::RenderWindow window;
 	void handleEvents();
 	void update();
 	void render();
