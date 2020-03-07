@@ -1,10 +1,12 @@
 #include "CharacterEntity.h"
 
-CharacterEntity::CharacterEntity(int windowWidth, int windowHeight, float speed, std::string fileName, int lives)
-	:speed(speed), fileName(fileName), lives(lives), startLives(lives), windowWidth(windowWidth), windowHeight(windowHeight)
+CharacterEntity::CharacterEntity(int windowWidth, int windowHeight, float speed, std::string fileName, int frameWidth, int frameHeight)
+	:speed(speed), fileName(fileName), windowWidth(windowWidth), windowHeight(windowHeight)
 {
 	texture.loadFromFile("../Images/" + fileName + ".png");
 	sprite.setTexture(texture);
+	this->intRect = sf::IntRect(0, 0, frameWidth, frameHeight);
+	this->sprite.setTextureRect(intRect);
 }
 
 CharacterEntity::~CharacterEntity()
@@ -14,6 +16,24 @@ CharacterEntity::~CharacterEntity()
 sf::FloatRect CharacterEntity::getGlobal()
 {
 	return sprite.getGlobalBounds();
+}
+
+
+
+sf::Texture CharacterEntity::getTexture()
+{
+	return this->texture;
+}
+
+sf::IntRect CharacterEntity::getIntRect()
+{
+	return this->intRect;
+}
+
+void CharacterEntity::setSpriteIntRect(int nrRow, int nrColumn)
+{
+	this->intRect = sf::IntRect(0, 0, frameWidth * nrRow, frameHeight * nrColumn);
+	//this->intRect.left = 0, 0, 0;
 }
 
 void CharacterEntity::setSpritePosition(float xPos, float yPos)
@@ -35,28 +55,7 @@ void CharacterEntity::moveSpritePosition(float xOffset, float yOffset)
 	sprite.move(xOffset, yOffset);
 }
 
-int CharacterEntity::getLives()
-{
-	return lives;
-}
 
-void CharacterEntity::increaseLives(int increase)
-{
-	if (startLives > lives)
-	{
-		lives += increase;
-	}
-}
-
-void CharacterEntity::decreaseLives(int decrease)
-{
-	lives -= decrease;
-}
-
-void CharacterEntity::setPosition(float xPos, float yPos)
-{
-	sprite.setPosition(xPos, yPos);
-}
 
 void CharacterEntity::draw(sf::RenderTarget & target, sf::RenderStates states) const
 {

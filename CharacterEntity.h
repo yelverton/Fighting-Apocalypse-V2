@@ -8,38 +8,40 @@ private:
 	sf::Sprite sprite;
 	sf::Texture texture;
 	std::string fileName;
+	sf::IntRect intRect;
+
+	int frameWidth;
+	int frameHeight;
 
 	int windowWidth;
 	int windowHeight;
-	int startLives;
-	int lives;
+	int row;
+
+	
+	int column;
 	float speed;
 
 	//hitbox
 	//hitboxTest
 
-protected:
-	const static int RIGHT = -1;
-	const static int DOWN = 1;
-	const static int LEFT = 1;
-	const static int UP = -1;
-	const static int NONE = 0;
+
 
 public:
-	CharacterEntity(int windowWidth, int windowHeight, float speed, std::string fileName, int lives=300);
+	CharacterEntity(int windowWidth, int windowHeight, float speed, std::string fileName, int frameWidth, int frameHeight);
 	virtual ~CharacterEntity();
 
 	sf::FloatRect getGlobal();
 	//hurtbox floatrect
 	//hurtboxTest floatrect
+	sf::Texture getTexture();
+	sf::IntRect getIntRect();
+	void setSpriteIntRect(int nrRow, int nrColumn);
 
 	void setSpritePosition(float xPos, float yPos);
 	void moveSpritePosition(float xOffset, float yOffset);
 
-	int getLives();
-	void increaseLives(int increase);
-	void decreaseLives(int decrease);
-	void setPosition(float xPos, float yPos);
+	
+
 
 	virtual void update() = 0;
 
