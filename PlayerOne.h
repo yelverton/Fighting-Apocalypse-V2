@@ -1,10 +1,10 @@
 #pragma once
-#include "Animation.h"
+#include "MovementEntity.h"
 
-class PlayerOne:public Animation
+class PlayerOne:public MovementEntity
 {
 public:
-	PlayerOne(int windowWidth, int windowHeight, float speed, int frameWidth, int frameHeight, std::string fileName, int lives);
+	PlayerOne(int windowWidth, int windowHeight, float speed, int frameWidth, int frameHeight, std::string fileName, float velocity, int lives);
 	virtual ~PlayerOne();
 
 	// Inherited via Animation

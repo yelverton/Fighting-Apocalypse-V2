@@ -1,8 +1,12 @@
 #include "PlayerOne.h"
 
-PlayerOne::PlayerOne(int windowWidth, int windowHeight, float speed, int frameWidth, int frameHeight, std::string fileName, int lives)
-	:Animation(frameWidth, frameHeight, windowWidth, windowHeight, speed, fileName, lives)
+
+
+PlayerOne::PlayerOne(int windowWidth, int windowHeight, float speed, int frameWidth, int frameHeight, std::string fileName, float velocity, int lives)
+	:MovementEntity(frameWidth, frameHeight, windowWidth, windowHeight, speed, fileName, velocity, lives)
 {
+	
+	this->setSpritePosition(100, windowHeight - float(this->getGlobal().height));
 }
 
 PlayerOne::~PlayerOne()
@@ -11,7 +15,7 @@ PlayerOne::~PlayerOne()
 
 void PlayerOne::update()
 {
-	Animation(update());
+	//Animation::update();
 
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
@@ -20,6 +24,7 @@ void PlayerOne::update()
 	}
 	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
 	{
+		MovementEntity::walking();
 		moveSpritePosition(RIGHT, NONE);
 	}
 	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))

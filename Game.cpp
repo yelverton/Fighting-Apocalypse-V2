@@ -59,10 +59,10 @@ Game::Game()
 	timePerFrame(sf::seconds(1.0f/60.0f)),
 	elapsedTimeSinceLastUpdate(sf::Time::Zero)
 {
-	//this->dt = 0;
-	playerOnePtr = new PlayerOne(WIDTH, HEIGHT, 3.0f, 70, 80, "ken", 300);
-	playerOnePtr->setPosition(100, 100);
-	
+	playerOnePtr = new PlayerOne(WIDTH, HEIGHT, 4.0f, 70, 80, "ken", 5.0f, 300);
+	playerOnePtr->walking(3, 5, 10);
+
+
 	window.setKeyRepeatEnabled(false);
 }
 
